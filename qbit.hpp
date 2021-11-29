@@ -19,6 +19,9 @@ public:
     qbit(std::complex<double> alpha, std::complex<double> beta);
     ~qbit();
 
+    void set_state(std::complex<double> alpha, std::complex<double> beta);
+    std::pair<std::complex<double>, std::complex<double>> get_state();
+
     // Get probability of the first state e.g. |0>
     double get_probability();
 

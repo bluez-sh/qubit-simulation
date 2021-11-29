@@ -1,21 +1,32 @@
 #include "qbit.hpp"
 
-qbit::qbit()
+qbit::qbit(): qbit(1, 0)
 {
-    qbit(1, 0);
 }
 
-qbit::qbit(std::complex<double> alpha, std::complex<double> beta): alpha(alpha), beta(beta), dist(1, resolution)
+qbit::qbit(std::complex<double> alpha, std::complex<double> beta): dist(1, resolution)
 {
-    if (ceil(alpha.real()*alpha.real() + alpha.imag()*alpha.imag() + beta.real()*beta.real() + beta.imag()*beta.imag()) != 1)
-        throw std::invalid_argument("Coefficients not normalized");
-    
+    set_state(alpha, beta);
     std::random_device r;
     re.seed(r());
 }
 
 qbit::~qbit()
 {
+}
+
+void qbit::set_state(std::complex<double> alpha, std::complex<double> beta)
+{
+    //if (ceil(alpha.real()*alpha.real() + alpha.imag()*alpha.imag() + beta.real()*beta.real() + beta.imag()*beta.imag()) != 1)
+        //throw std::invalid_argument("Coefficients not normalized");
+
+    this->alpha = alpha;
+    this->beta = beta;
+}
+
+std::pair<std::complex<double>, std::complex<double>> qbit::get_state()
+{
+    return {alpha, beta};
 }
 
 double qbit::get_probability()
