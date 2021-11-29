@@ -17,8 +17,8 @@ qbit::~qbit()
 
 void qbit::set_state(std::complex<double> alpha, std::complex<double> beta)
 {
-    //if (ceil(alpha.real()*alpha.real() + alpha.imag()*alpha.imag() + beta.real()*beta.real() + beta.imag()*beta.imag()) != 1)
-        //throw std::invalid_argument("Coefficients not normalized");
+    if (ceil(alpha.real()*alpha.real() + alpha.imag()*alpha.imag() + beta.real()*beta.real() + beta.imag()*beta.imag()) != 1)
+        throw std::invalid_argument("Coefficients not normalized");
 
     this->alpha = alpha;
     this->beta = beta;
