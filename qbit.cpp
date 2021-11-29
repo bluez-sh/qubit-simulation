@@ -1,31 +1,4 @@
-#include <complex>
-#include <exception>
-#include <random>
-#include <iostream>
-
-class qbit
-{
-private:
-    std::complex<double> alpha;
-    std::complex<double> beta;
-
-    const int resolution = 10000;
-    std::default_random_engine re;
-    std::uniform_int_distribution<> dist;
-public:
-    qbit();
-    qbit(std::complex<double> alpha, std::complex<double> beta);
-    ~qbit();
-
-    // Get probability of the first state e.g. |0>
-    double get_probability();
-
-    // Measure the qbit to collapse superposition into a definite state
-    void measure();
-
-    // Run experiment "sample_size" times and return occurrences of the first state
-    static unsigned int simulate(const qbit& q, unsigned long sample_size);
-};
+#include "qbit.hpp"
 
 qbit::qbit()
 {
@@ -66,32 +39,10 @@ void qbit::measure()
 unsigned int qbit::simulate(const qbit& q, unsigned long sample_size)
 {
     unsigned long count_first = 0;
-    while(sample_size--) {
+    while (sample_size--) {
         qbit qtest(q.alpha, q.beta);
         qtest.measure();
         if (qtest.get_probability()) ++count_first;
     }
     return count_first;
-}
-
-int main()
-{
-    qbit q(sqrt(1/3.0), sqrt(2/3.0));
-    std::cout << "\nProb |0>: " << q.get_probability();
-    std::cout << "\nProb |1>: " << 1-q.get_probability();
-
-    // q.measure();
-    // if (q.get_probability())
-    //     std::cout << "\nMeasured: |0>";
-    // else
-    //     std::cout << "\nMeasured: |1>";
-    
-    const unsigned long sample_size = 8192;
-    std::cout << "\n\n--- Simulation result ---";
-    auto cnt = qbit::simulate(q, sample_size);
-    auto percent = (cnt / static_cast<double>(sample_size)) * 100;
-    std::cout << "\nCount |0>: " << cnt << ", " << percent << "%";
-    std::cout << "\nCount |1>: " << sample_size-cnt << ", " << 100-percent << "%";
-
-    return 0;
 }
