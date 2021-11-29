@@ -24,12 +24,12 @@ void qbit::set_state(std::complex<double> alpha, std::complex<double> beta)
     this->beta = beta;
 }
 
-std::pair<std::complex<double>, std::complex<double>> qbit::get_state()
+std::pair<std::complex<double>, std::complex<double>> qbit::get_state() const
 {
     return {alpha, beta};
 }
 
-double qbit::get_probability()
+double qbit::get_probability() const
 {
     return alpha.real()*alpha.real() + alpha.imag()*alpha.imag();
 }

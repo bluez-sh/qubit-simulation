@@ -20,10 +20,10 @@ public:
     ~qbit();
 
     void set_state(std::complex<double> alpha, std::complex<double> beta);
-    std::pair<std::complex<double>, std::complex<double>> get_state();
+    std::pair<std::complex<double>, std::complex<double>> get_state() const;
 
     // Get probability of the first state e.g. |0>
-    double get_probability();
+    double get_probability() const;
 
     // Measure the qbit to collapse superposition into a definite state
     void measure();

@@ -13,23 +13,33 @@ void run_simulation(const qbit& q)
     std::cout << "\nCount |1>: " << sample_size-cnt << ", " << 100-percent << "%";
 }
 
+void print_info(const qbit& q)
+{
+    std::cout << "\nProb |0>: " << q.get_probability();
+    std::cout << "\nProb |1>: " << 1-q.get_probability();
+    std::cout << "\nCoeffs: " << q.get_state().first << ", " << q.get_state().second;
+}
+
 int main()
 {
     qbit q;
-    std::cout << "\nProb |0>: " << q.get_probability();
-    std::cout << "\nProb |1>: " << 1-q.get_probability();
+    print_info(q);
     
     qop::x(q);
-
     std::cout << "\n\nx-gate applied";
-    std::cout << "\nProb |0>: " << q.get_probability();
-    std::cout << "\nProb |1>: " << 1-q.get_probability();
+    print_info(q);
+
+    qop::y(q);
+    std::cout << "\n\ny-gate applied";
+    print_info(q);
 
     qop::h(q);
-
     std::cout << "\n\nh-gate applied";
-    std::cout << "\nProb |0>: " << q.get_probability();
-    std::cout << "\nProb |1>: " << 1-q.get_probability();
+    print_info(q);
+
+    qop::z(q);
+    std::cout << "\n\nz-gate applied";
+    print_info(q);
 
     run_simulation(q);
 
