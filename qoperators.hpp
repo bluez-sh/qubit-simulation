@@ -2,20 +2,28 @@
 #define _qoperators_
 
 #include "qbit.hpp"
+#include "qensemble.hpp"
 
 namespace qop {
 
+    //// Single qubit gates ////
+
     // Pauli-X gate
-    void x(qbit& q);
+    qbit& x(qbit& q);
 
     // Pauli-Y gate
-    void y(qbit& q);
+    qbit& y(qbit& q);
 
     // Pauli-Z gate
-    void z(qbit& z);
+    qbit& z(qbit& q);
 
     // Hadamard gate
-    void h(qbit& q);
+    qbit& h(qbit& q);
+
+    //// Two qubit gates ////
+
+    // CNOT gate
+    qensemble& cx(qensemble& qens);
 };
 
 #endif

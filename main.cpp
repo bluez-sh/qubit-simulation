@@ -2,6 +2,7 @@
 
 #include "qbit.hpp"
 #include "qoperators.hpp"
+#include "qensemble.hpp"
 
 void run_simulation(const qbit& q)
 {
@@ -47,9 +48,31 @@ int main()
 
     q.measure();
     if (q.get_probability())
-        std::cout << "\nMeasured: |0>";
+        std::cout << "\nMeasured q1: |0>";
     else
-        std::cout << "\nMeasured: |1>";
+        std::cout << "\nMeasured q1: |1>";
+
+    std::cout << "\n";
+
+    qbit q2;
+    qensemble qens({q, q2});
+
+    std::cout << "\nensemble q1 with q2(|0>)\n";
+    for (auto x: qens.get_state())
+        std::cout << x << ' ';
+    
+    std::cout << "\n";
+
+    std::cout << "\nh-gate on q2(|0>)";
+    qop::h(q2);
+    qensemble qbell({q, q2});
+    qop::cx(qbell);
+
+    std::cout << "\ncx-gate on q2 and q1\n";
+    for (auto x: qbell.get_state())
+        std::cout << x << ' ';
+    
+    std::cout << "\n";
 
     return 0;
 }
