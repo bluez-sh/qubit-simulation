@@ -1,4 +1,4 @@
-#include "qoperators.hpp"
+#include <qoperators.hpp>
 
 #include <array>
 #include <assert.h>

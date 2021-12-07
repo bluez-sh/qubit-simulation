@@ -1,4 +1,4 @@
-#include "qbit.hpp"
+#include <qbit.hpp>
 
 qbit::qbit(): qbit(1, 0)
 {

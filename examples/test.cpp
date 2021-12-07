@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "qbit.hpp"
-#include "qoperators.hpp"
-#include "qensemble.hpp"
+#include <qbit.hpp>
+#include <qoperators.hpp>
+#include <qensemble.hpp>
 
 void run_simulation(const qbit& q)
 {

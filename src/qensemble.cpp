@@ -1,4 +1,4 @@
-#include "qensemble.hpp"
+#include <qensemble.hpp>
 
 using coeff_pair = std::pair<std::complex<double>, std::complex<double>>;
 
