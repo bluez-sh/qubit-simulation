@@ -14,6 +14,7 @@ public:
     ~qensemble();
 
     std::vector<std::complex<double>>& get_state();
+    std::vector<double> get_probabilities() const;
 };
 
 #endif

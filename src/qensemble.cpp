@@ -32,3 +32,10 @@ std::vector<std::complex<double>>& qensemble::get_state()
 {
     return cv;
 }
+
+std::vector<double> qensemble::get_probabilities() const
+{
+    std::vector<double> pv;
+    for (auto x: cv) pv.push_back(x.real()*x.real() + x.imag()*x.imag());
+    return pv;
+}

@@ -55,7 +55,7 @@ int main()
     std::cout << "\n";
 
     qbit q2;
-    qensemble qens({q, q2});
+    qensemble qens({q2, q});
 
     std::cout << "\nensemble q1 with q2(|0>)\n";
     for (auto x: qens.get_state())
@@ -70,6 +70,11 @@ int main()
 
     std::cout << "\ncx-gate on q2 and q1\n";
     for (auto x: qbell.get_state())
+        std::cout << x << ' ';
+
+    std::cout << "\n";
+    
+    for (auto x: qbell.get_probabilities())
         std::cout << x << ' ';
     
     std::cout << "\n";
