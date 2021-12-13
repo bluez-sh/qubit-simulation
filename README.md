@@ -1,5 +1,5 @@
 # qubit-simulation
-Simulation of Qubits (Quantum Bits) in C++
+Simulation of Quantum Bits and Quantum Circuits using modern C++
 
 ## Instructions
 To build: <code> mkdir build && cd build && cmake .. && make </code> <br>
