@@ -1,7 +1,7 @@
 #ifndef _qensemble_
 #define _qensemble_
 
-#include "qbit.hpp"
+#include <qbit.hpp>
 
 #include <vector>
 

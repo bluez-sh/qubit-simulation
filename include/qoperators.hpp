@@ -1,8 +1,8 @@
 #ifndef _qoperators_
 #define _qoperators_
 
-#include "qbit.hpp"
-#include "qensemble.hpp"
+#include <qbit.hpp>
+#include <qensemble.hpp>
 
 namespace qop {
 

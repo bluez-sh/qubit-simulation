@@ -9,6 +9,8 @@ aux_source_directory(examples EXAMPLE_SRCS)
 aux_source_directory(src PROJECT_SRCS)
 
 include_directories(include)
+include_directories(src)
+include(CTest)
 
 set(CMAKE_BUILD_TYPE Debug)
 
@@ -24,3 +26,5 @@ foreach (SRC ${EXAMPLE_SRCS})
     # add an executable for each example source
     add_executable(${TARGET_NAME} ${SRC} ${PROJECT_SRCS})
 endforeach ()
+
+add_subdirectory(test)
